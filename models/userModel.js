@@ -1,4 +1,3 @@
-const e = require('express');
 const prisma = require('../prisma/client');
 
 async function postUser(username, email, password) {
