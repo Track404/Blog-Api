@@ -1,5 +1,4 @@
 const prisma = require('../prisma/client');
-const { get } = require('../routes/userRoute');
 
 async function postPost(title, content, authorId) {
   const post = await prisma.posts.create({

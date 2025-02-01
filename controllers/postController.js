@@ -47,14 +47,6 @@ module.exports = {
   createPost,
   getPosts,
   getUniquePostById,
-  updatePost,
-  deletePost,
-};
-
-module.exports = {
-  createPost,
-  getPosts,
-  getUniquePostById,
   getPostsByAuthorId,
   updatePost,
   deletePost,
