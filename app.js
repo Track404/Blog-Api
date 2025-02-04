@@ -13,7 +13,7 @@ app.use('/', userRoute);
 app.use('/', postRoute);
 app.use('/', commentRoute);
 app.use(passport.initialize());
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5432;
 
 app.listen(PORT, () => {
   console.log(`My first Express app - listening on port ${PORT}!`);
