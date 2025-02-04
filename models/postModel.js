@@ -12,7 +12,11 @@ async function postPost(title, content, authorId) {
 }
 
 async function getPosts() {
-  const posts = await prisma.posts.findMany();
+  const posts = await prisma.posts.findMany({
+    include: {
+      Comments: true, // Include the related comments
+    },
+  });
 
   return posts;
 }
@@ -21,6 +25,9 @@ async function getUniquePostById(id) {
   const post = await prisma.posts.findUnique({
     where: {
       id: id,
+    },
+    include: {
+      Comments: true, // Include the related comments
     },
   });
 
@@ -37,7 +44,7 @@ async function getPostsByAuthorId(authorId) {
   return post;
 }
 
-async function updatePost(id, title, content) {
+async function updatePost(id, title, content, published) {
   const post = await prisma.posts.update({
     where: {
       id: id,
@@ -45,6 +52,7 @@ async function updatePost(id, title, content) {
     data: {
       title: title,
       content: content,
+      published: published,
     },
   });
   return post;
@@ -54,6 +62,9 @@ async function deletePost(id) {
   const post = await prisma.posts.delete({
     where: {
       id: id,
+    },
+    include: {
+      Comments: true,
     },
   });
   return post;

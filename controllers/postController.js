@@ -27,11 +27,12 @@ async function getPostsByAuthorId(req, res) {
 }
 
 async function updatePost(req, res) {
-  const { title, content } = req.body;
+  const { title, content, published } = req.body;
   const post = await postModel.updatePost(
     Number(req.params.id),
     title,
-    content
+    content,
+    published
   );
 
   res.json({ post: post, message: `Update Post ${req.params.id}` });
